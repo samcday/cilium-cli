@@ -1,0 +1,23 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  namespace: cilium-test
+  name: allow-all-except-world
+spec:
+  endpointSelector: {}
+  egress:
+  - toEntities:
+    - host
+    - remote-node
+    - cluster
+    - init
+    - health
+    - kube-apiserver
+  ingress:
+  - fromEntities:
+    - host
+    - remote-node
+    - cluster
+    - init
+    - health
+    - kube-apiserver
